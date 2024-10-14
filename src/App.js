@@ -10,23 +10,26 @@ class App extends Component {
     ]
   }
   deleteTodo = (id) => {
-    const todos = this.state.todos.filter(todos => {
+    const {todos} = this.state;
+    const updatedTodos = todos.filter(todos => {
       return  todos.id !== id;
     });
     this.setState({
-      todos
+      todos: updatedTodos
     })
   }
 
   addtodo = (todo) => {
+    const  {todos} = this.state;
     todo.id = Math.random();
-    let todos= [...this.state.todos, todo];
+    const updatedTodos= [...todos, todo];
     this.setState({
-      todos
+      todos: updatedTodos
     })
   }
 
   render(){
+    const  {todos} = this.state;
     return (
       <div className="todo-app container">
         <h1 className='center blue text'>Todo's</h1>
